@@ -1,0 +1,57 @@
+1. Consider the following Facts.
+
+fatherof(rasel, halima). fatherof(rasel, sumon). motherof(kutub, halima). motherof(rifa, fahima).
+motherof(sabina, fahima). male(rasel). male(kutub). female(halima).
+
+Check whether the following statement are true or false through prolog query.
+
+i. Rasel is the Father of Halima
+ii. Rifa is a male
+iii. Fahima is a female
+
+Find out the following people:
+i. Children of Rasel
+ii. Male family members
+iii. Female family members
+
+2. Consider the following facts.
+
+Sakib likes cricket.
+Sakib likes football.
+Sakib likes rugby.
+Riad likes football.
+Riad likes rugby.
+Sabbir likes flower.
+Sabbir likes custard.
+Sabbir likes fruits.
+
+Rules/Statements:
+i. Sakib likes anyone who likes football.
+ii. Sakib likes anything that Sabbir likes.
+
+Solve the above problem using prolog.
+
+3. Calculate the Density of Population of USA and Bangladesh or any other using the following facts.
+
+population(china, 10000).
+population(india, 6000).
+population(usa, 800000).
+population(bangladesh, 10000).
+
+4. Calculate Ruling Period of rulers under the following period using the following facts.
+
+reigns(khalid, 1900, 1950).
+reigns(mohammad, 1951, 1970).
+reigns(labib, 1971, 1985).
+reigns(yakub, 1986, 2010).
+
+
+5. Considering the above family tree find the following relationships: Male Female Brother Sister Sibling Grandfather Grandmother
+
+Abid
+├── Prince (male)
+│   ├── Ripa (female) 
+│   └── Sakib (male)
+└── Riya (female)
+    ├── Sopon (male)
+    └── Suma (female) 

@@ -1,0 +1,217 @@
+Lab-1: 
+
+fatherof(rasel, halima).
+fatherof(rasel, sumon).
+
+motherof(kutub, halima).
+motherof(rikta, fahima).
+motherof(sabina, fahima).
+
+male(rasel).
+male(kutub).
+
+female(fahima).
+female(halima).
+ 
+
+
+questions :
+i) Rasel is the father of Halima
+?- fatherof(rasel, halima).
+
+ii) Rikta is the mother of Fahima
+?- motherof(rikta, fahima).
+
+iii) Hera is a male
+?- male(hera).
+
+iv) Fahima is a female
+?- female(fahima).
+
+Part-B
+
+i) Children of Rasel
+?- fatherof(rasel, X).
+
+ii) Male Family Members
+?- male(X).
+
+iii) Female Family Members
+?- female(X).
+
+
+
+Command দিয়ে clear
+shell(clear).
+
+
+(Linux/Mac এ কাজ করবে)
+
+Windows হলে:
+
+shell(cls).
+
+Exp-2
+
+Step 1: Write Facts
+likes(sakib, cricket).
+likes(sakib, football).
+likes(sakib, rugby).
+
+likes(riad, football).
+likes(riad, rugby).
+
+likes(sabbir, flower).
+likes(sabbir, custard).
+likes(sabbir, fruits).
+
+% Rule 1
+likes(sabbir, X) :- likes(X, football).
+
+% Rule 2
+likes(sakib, Y) :- likes(sabbir, Y).
+
+i.Who does Sabbir like?
+
+?- likes(sabbir, X).
+
+2. Who does Sakib like?
+
+?- likes(sakib, X).
+
+
+
+Lab-3:
+
+% Facts
+population(china, 10000).
+population(india, 90000).
+population(usa, 800000).
+population(bangladesh, 1200000).
+
+area(china, 10000).
+area(india, 6000).
+area(usa, 4000).
+area(bangladesh, 10000).
+
+% Rule to calculate density
+density(Country, Density) :-
+    population(Country, P),
+    area(Country, A),
+    A \= 0,
+    Density is P / A.
+
+i.Population density of USA
+
+?- density(usa, D).
+
+
+
+2. Population density of Bangladesh
+
+?- density(bangladesh, D).
+
+3.All countries density
+
+?- density(Country, D).
+
+Lab-4 
+
+% Facts
+reigns(khalid, 1900, 1950).
+reigns(mohammad, 1951, 1970).
+reigns(labib, 1971, 1985).
+reigns(yakub, 1986, 2010).
+
+% Rule to calculate ruling period
+ruling_period(Ruler, Period) :-
+    reigns(Ruler, Start, End),
+    Period is End - Start.
+
+
+
+1. Ruling period of Khalid
+
+?- ruling_period(khalid, P).
+
+
+2. Ruling period of Mohammad
+
+?- ruling_period(mohammad, P).
+
+
+3.All rulers and their ruling periods
+
+?- ruling_period(Ruler, P).
+
+Lab-5
+%-------------------------
+% Facts
+%-------------------------
+
+% Gender
+male(abid).
+male(prince).
+male(sakib).
+male(sopon).
+
+female(riya).
+female(ripa).
+female(suma).
+
+% Parent relationships
+parent(abid, prince).
+parent(abid, riya).
+
+parent(prince, ripa).
+parent(prince, sakib).
+
+parent(riya, sopon).
+parent(riya, suma).
+
+%-------------------------
+% Rules
+%-------------------------
+
+% Sibling: two people share a parent, and are not the same person
+sibling(X, Y) :-
+    parent(P, X),
+    parent(P, Y),
+    X \= Y.
+
+% Brother
+brother(X, Y) :-
+    sibling(X, Y),
+    male(X).
+
+% Sister
+sister(X, Y) :-
+    sibling(X, Y),
+    female(X).
+
+% Grandparent
+grandparent(X, Y) :-
+    parent(X, P),
+    parent(P, Y).
+
+% Grandfather
+grandfather(X, Y) :-
+    grandparent(X, Y),
+    male(X).
+
+% Grandmother
+grandmother(X, Y) :-
+    grandparent(X, Y),
+    female(X).
+
+% -----------------------
+% Optional Queries Examples
+% -----------------------
+% ?- male(X).
+% ?- female(X).
+% ?- sibling(ripa, X).
+% ?- sister(ripa, X).
+% ?- brother(sakib, X).
+% ?- grandfather(X, ripa).
+% ?- grandmother(X, sopon).
+grandfather(abid,X).

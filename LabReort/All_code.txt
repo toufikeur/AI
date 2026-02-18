@@ -1,0 +1,331 @@
+Lab Experiments
+
+1.Study on Arithmetic Operations (Add, Subtraction, Division, Multiplication) in python.
+
+2.Study on Arithmetic Operations (Subtraction and Multiplication) in prolog.
+3.Write a prolog program for addition of two numbers in artificial intelligence.
+
+4.Write a prolog program for finding the sum of all numbers in a given list in artificial
+intelligence
+5. Write a program to reverse given numbers in python.
+6. Read the statements carefully:
+Convert the following queries/facts into FOL
+
+Sakib likes cricket.
+Sakib likes football.
+Sakib likes rugby.
+Riad likes football.
+Riad likes rugby.
+Sabbir likes flower.
+Sabbir likes custurd.
+Sabbir likes fruits.
+
+Rules/statements
+1. Sabbir likes anyone who likes football.
+2. Sakib likes anything that Sabbir likes.
+
+Solve the following above with AI prolog.
+
+7. Read the statements carefully:
+Convert the following queries/facts into FOL
+
+Rashid is the brother of Tamim.
+Rashid is the brother of Rishab.
+Champa is the sister of Tamim.
+Champa is the sister of Rishab
+Rashid is a man.
+Tamim is a man.
+Rishab is a man.
+Champa is a woman.
+
+Rules/queries
+1. Find who's are woman.
+2. Find who's are woman using variable.
+2. Find who's are man.
+
+
+Lab-1:
+# Python program to perform all arithmetic operations
+
+# Taking input from the user
+num1 = float(input("Enter the first number: "))
+num2 = float(input("Enter the second number: "))
+
+# Addition
+addition = num1 + num2
+print("Addition:", addition)
+
+# Subtraction
+subtraction = num1 - num2
+print("Subtraction:", subtraction)
+
+# Multiplication
+multiplication = num1 * num2
+print("Multiplication:", multiplication)
+
+# Division
+if num2 != 0:
+    division = num1 / num2
+    print("Division:", division)
+else:
+    print("Division: Cannot divide by zero")
+
+# Floor Division
+if num2 != 0:
+    floor_div = num1 // num2
+    print("Floor Division:", floor_div)
+else:
+    print("Floor Division: Cannot divide by zero")
+
+# Modulus
+if num2 != 0:
+    modulus = num1 % num2
+    print("Modulus (Remainder):", modulus)
+else:
+    print("Modulus: Cannot divide by zero")
+
+# Exponentiation
+exponent = num1 ** num2
+print("Exponentiation:", exponent)
+
+
+
+
+Lab-2: 
+
+% Subtraction
+subtract(A, B, Result) :-
+    Result is A - B.
+
+% Multiplication
+multiply(A, B, Result) :-
+    Result is A * B.
+
+
+command: 
+
+R is 5 - 2.
+
+R is 5*3.
+
+Lab-3: 
+
+% ------------------------------------
+% Program: Addition of Two Numbers
+% ------------------------------------
+
+% Rule for addition
+add(X, Y, Result) :-
+    Result is X + Y.
+
+% Main program
+start :-
+    write('Enter first number: '),
+    read(X),
+    write('Enter second number: '),
+    read(Y),
+    add(X, Y, Result),
+    write('Sum is: '),
+    write(Result), nl.
+
+
+
+Command: 
+start. 
+
+
+
+Lab-4:
+
+% Base case: sum of empty list is 0
+sum_list([], 0).
+
+% Recursive case
+sum_list([Head|Tail], Sum) :-
+    sum_list(Tail, Rest),
+    Sum is Head + Rest.
+
+
+Command: 
+?- sum_list([1,2,3,4,5], S).
+
+
+Lab-5: 
+
+% ----------------------------------------
+% Program: Reverse a Given Number
+% ----------------------------------------
+
+% Main reverse predicate
+reverse_number(Number, Reverse) :-
+    Number >= 0,
+    reverse_helper(Number, 0, Reverse).
+
+% Helper predicate (Recursion)
+reverse_helper(0, Reverse, Reverse).
+
+reverse_helper(Number, Acc, Reverse) :-
+    Number > 0,
+    Digit is Number mod 10,
+    NewAcc is Acc * 10 + Digit,
+    NewNumber is Number // 10,
+    reverse_helper(NewNumber, NewAcc, Reverse).
+
+% Start program with user input
+start :-
+    write('Enter a number: '),
+    read(Number),
+    reverse_number(Number, Reverse),
+    write('Reversed number is: '),
+    write(Reverse), nl.
+
+
+command : start.
+
+python code: 
+# -----------------------------------------
+# Program: Reverse a Given Number
+# -----------------------------------------
+
+def reverse_number(num):
+    reverse = 0
+    is_negative = False
+
+    # Check if number is negative
+    if num < 0:
+        is_negative = True
+        num = abs(num)
+
+    # Reverse the number
+    while num > 0:
+        digit = num % 10
+        reverse = reverse * 10 + digit
+        num = num // 10
+
+    # Restore negative sign if needed
+    if is_negative:
+        reverse = -reverse
+
+    return reverse
+
+
+# Main Program
+num = int(input("Enter a number: "))
+result = reverse_number(num)
+
+print("Reversed number:", result)
+ 
+
+
+
+Lab-6 : 
+
+
+Step 1: Write Facts
+likes(sakib, cricket).
+likes(sakib, football).
+likes(sakib, rugby).
+
+likes(riad, football).
+likes(riad, rugby).
+
+likes(sabbir, flower).
+likes(sabbir, custard).
+likes(sabbir, fruits).
+
+% Rule 1
+likes(sabbir, X) :- likes(X, football).
+
+% Rule 2
+likes(sakib, Y) :- likes(sabbir, Y).
+
+
+
+
+i.Who does Sabbir like?
+
+?- likes(sabbir, X).
+
+2. Who does Sakib like?
+
+?- likes(sakib, X).
+
+
+
+
+
+Lab-7: 
+
+% ---------------------------------
+% Facts
+% ---------------------------------
+
+brother(rashid, tamim).
+brother(rashid, rishab).
+
+sister(champa, tamim).
+sister(champa, rishab).
+
+man(rashid).
+man(tamim).
+man(rishab).
+
+woman(champa).
+
+% ---------------------------------
+% Rules
+% ---------------------------------
+
+% Sibling rule (share same brother or sister)
+sibling(X, Y) :-
+    brother(X, Y).
+sibling(X, Y) :-
+    sister(X, Y).
+sibling(X, Y) :-
+    brother(Y, X).
+sibling(X, Y) :-
+    sister(Y, X).
+
+% Find brother
+is_brother(X, Y) :-
+    sibling(X, Y),
+    man(X).
+
+% Find sister
+is_sister(X, Y) :-
+    sibling(X, Y),
+    woman(X).
+
+
+
+Command: 
+Find who are women
+?- woman(X).
+2️⃣ Find who are women (using variable explicitly)
+?- woman(Who).
+3️⃣ Find who are men
+?- man(X).
+
+4. Find Champa's brother
+?- is_brother(X, champa).
+
+
+5. Find Champa's brother
+?- brother(X, champa).
+?- is_brother(X, rashid).
+
+Better query:
+
+?- brother(X, Y), sister(champa, Y).
+
+6. Find Rashid's two brothers using variable
+?- is_brother(Brother, rashid).
+
+5. Find Rashid's two brothers
+?- brother(X, rashid).
+
+
+6. Find Rashid's two brothers (using variable)
+?- is_brother(X, rashid).
+
+
